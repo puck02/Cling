@@ -165,7 +165,7 @@ fn check_all(exercises: &ExerciseList, state: &mut StateFile) {
                 state.complete_exercise(&exercise.name);
                 passed += 1;
             }
-            Err(e) => {
+            Err(_) => {
                 println!("{}", "❌".red());
                 failed += 1;
             }
