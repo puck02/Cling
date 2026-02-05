@@ -1,0 +1,53 @@
+# Build directories
+build/
+target/
+*.out
+*.exe
+*.o
+*.a
+*.so
+*.dylib
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Cling state
+.cling-state.txt
+.cling-state.json
+
+# Backup files
+*.bak
+*.orig
+
+# Compiled exercises
+exercises/**/*.out
+exercises/**/*.exe
+exercises/**/a.out
+
+# Test results
+test_results/
+*.log
+
+# User modified exercises (optional)
+# exercises/**/*.c
+# !exercises/**/*.c.orig
+
+# Cargo lock (CLI tool)
+Cargo.lock
+
+# Python cache (if any scripts)
+__pycache__/
+*.pyc

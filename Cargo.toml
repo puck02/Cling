@@ -1,0 +1,17 @@
+[package]
+name = "cling"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.4", features = ["derive"] }
+toml = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+notify = "6.1"
+crossterm = "0.27"
+colored = "2.1"
+indicatif = "0.17"
+
+[[bin]]
+name = "cling"
+path = "src/main.rs"

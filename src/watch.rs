@@ -1,0 +1,108 @@
+use crate::exercise::ExerciseList;
+use crate::state::StateFile;
+use crate::verify;
+use crate::ui;
+use colored::Colorize;
+use notify::{Watcher, RecursiveMode, Event};
+use std::sync::mpsc::channel;
+use std::time::Duration;
+
+pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
+    println!("\n{}", exercises.welcome_message);
+    println!("\n{}", "开始watch模式...".cyan().bold());
+    println!("{}", "修改练习文件后会自动检测并运行".dimmed());
+    println!("\n{}", "命令: h(hint) | n(next) | r(run) | l(list) | q(quit)".yellow());
+    
+    // 确定当前练习
+    let mut current_exercise = if let Some(current) = &state.current {
+        current.clone()
+    } else if let Some(first) = exercises.exercises.first() {
+        state.set_current(&first.name);
+        state.save(".cling-state.txt");
+        first.name.clone()
+    } else {
+        eprintln!("{}", "没有可用的练习".red());
+        return;
+    };
+    
+    // 显示进度
+    ui::show_progress(exercises, state);
+    
+    // 初始检查
+    check_exercise(exercises, &current_exercise, state);
+    
+    // 设置文件监控
+    let (tx, rx) = channel();
+    let mut watcher = notify::recommended_watcher(move |res: Result<Event, _>| {
+        if let Ok(event) = res {
+            let _ = tx.send(event);
+        }
+    }).expect("创建watcher失败");
+    
+    watcher.watch(
+        std::path::Path::new("exercises"),
+        RecursiveMode::Recursive,
+    ).expect("监控目录失败");
+    
+    // 主循环
+    loop {
+        // 检查文件变化
+        if let Ok(event) = rx.recv_timeout(Duration::from_millis(100)) {
+            // 检查是否是当前练习的文件
+            if let Some(exercise) = exercises.find(&current_exercise) {
+                let path = exercise.path();
+                if event.paths.iter().any(|p| p == &path) {
+                    println!("\n{}", "检测到文件变化...".yellow());
+                    check_exercise(exercises, &current_exercise, state);
+                }
+            }
+        }
+        
+        // 这里应该检查键盘输入，但为了简化，暂时省略
+        // 可以使用 crossterm 实现非阻塞键盘输入
+    }
+}
+
+fn check_exercise(exercises: &ExerciseList, name: &str, state: &mut StateFile) {
+    if let Some(exercise) = exercises.find(name) {
+        println!("\n{}", "=".repeat(60));
+        println!("{} {}", "检查:".cyan().bold(), name);
+        
+        match verify::verify(exercise) {
+            Ok(output) => {
+                println!("{}", "✅ 成功！".green().bold());
+                if !output.is_empty() && output.len() < 500 {
+                    println!("\n{}", output);
+                }
+                
+                if !state.is_completed(name) {
+                    state.complete_exercise(name);
+                    
+                    if let Some(next) = exercises.get_next(name) {
+                        println!("\n{}", "🎉 太棒了！进入下一题...".green());
+                        state.set_current(&next.name);
+                    } else {
+                        println!("\n{}", "🎊 恭喜完成所有练习！".green().bold());
+                    }
+                    
+                    state.save(".cling-state.txt");
+                    ui::show_progress(exercises, state);
+                }
+            }
+            Err(e) => {
+                println!("{}", "❌ 失败".red().bold());
+                
+                // 只显示前几行错误
+                let lines: Vec<&str> = e.lines().collect();
+                for line in lines.iter().take(15) {
+                    println!("{}", line);
+                }
+                if lines.len() > 15 {
+                    println!("\n{}", "... (更多错误信息被省略)".dimmed());
+                }
+                
+                println!("\n{}", format!("💡 提示: 按 'h' 查看提示").yellow());
+            }
+        }
+    }
+}
