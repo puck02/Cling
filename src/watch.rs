@@ -110,10 +110,16 @@ fn check_exercise(exercises: &ExerciseList, name: &str, state: &mut StateFile) {
                     if let Some(next) = exercises.get_next(name) {
                         println!("\n{}", "🎉 太棒了！进入下一题...".green());
                         state.set_current(&next.name);
+                        state.save(".cling-state.txt");
+                        ui::show_progress(exercises, state);
+                        
+                        // 自动检查下一题
+                        check_exercise(exercises, &next.name, state);
                     } else {
+                        state.save(".cling-state.txt");
                         show_completion_celebration(exercises);
                     }
-                    
+                } else {
                     state.save(".cling-state.txt");
                     ui::show_progress(exercises, state);
                 }
