@@ -106,6 +106,7 @@ fn check_exercise(exercises: &ExerciseList, name: &str, state: &mut StateFile) {
                 
                 if !state.is_completed(name) {
                     state.complete_exercise(name);
+                    state.save(".cling-state.txt");  // 立即保存完成状态
                     
                     if let Some(next) = exercises.get_next(name) {
                         println!("\n{}", "🎉 太棒了！进入下一题...".green());
@@ -116,7 +117,6 @@ fn check_exercise(exercises: &ExerciseList, name: &str, state: &mut StateFile) {
                         // 自动检查下一题
                         check_exercise(exercises, &next.name, state);
                     } else {
-                        state.save(".cling-state.txt");
                         show_completion_celebration(exercises);
                     }
                 } else {
