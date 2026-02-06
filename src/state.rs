@@ -18,7 +18,6 @@ impl StateFile {
             for line in content.lines() {
                 if line.starts_with("completed:") {
                     let name = line.trim_start_matches("completed:").trim();
-                    eprintln!("DEBUG: Loading completed: {}", name);
                     state.completed.insert(name.to_string());
                 } else if line.starts_with("current:") {
                     let name = line.trim_start_matches("current:").trim();
@@ -26,8 +25,6 @@ impl StateFile {
                 }
             }
         }
-        
-        eprintln!("DEBUG: Total completed loaded: {}", state.completed.len());
         
         state
     }
