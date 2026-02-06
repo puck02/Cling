@@ -4,6 +4,6 @@
 // 提示：检查 printf 语句是否完整
 
 int main(void) {
-    printf("Hello, World!")
+    printf("Hello, World!");
     return 0;
 }

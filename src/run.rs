@@ -32,7 +32,6 @@ pub fn run(exercises: &ExerciseList, name: &str, state: &mut StateFile) {
                 Err(e) => {
                     println!("{}", "❌ 失败".red().bold());
                     println!("\n{}", e);
-                    println!("\n{}", format!("💡 提示: 运行 'cling hint {}' 查看提示", name).yellow());
                 }
             }
         }

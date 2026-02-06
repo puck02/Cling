@@ -5,12 +5,12 @@
 // 2. 检查是否缺少分号
 // 3. 检查函数声明是否正确
 
-int main(void {
-    int x = 42
-    printf("The answer is: %d\n", x)
+int main(void) {
+    int x = 42;
+    printf("The answer is: %d\n", x);
     
     int y = 100;
-    printf("Y is: %d\n" y);
+    printf("Y is: %d\n",  y);
     
-    return 0
+    return 0;
 }
