@@ -49,18 +49,31 @@ fn verify_test(exercise: &Exercise) -> Result<String, String> {
     let out_path = path.with_extension("out");
     let unity_path = "tests/unity/unity.c";
     
+    // 特殊处理snake_test，需要编译snake_logic.c
+    let mut compile_args = vec![
+        "-Wall".to_string(),
+        "-Wextra".to_string(),
+        "-std=c11".to_string(),
+        "-I".to_string(), "tests/unity".to_string(),
+        "-DUNITY_INCLUDE_DOUBLE".to_string(),
+        path.to_str().unwrap().to_string(),
+    ];
+    
+    // 如果是snake_test，添加snake_logic.c
+    if exercise.name == "snake_test" {
+        let logic_path = path.parent().unwrap().join("snake_logic.c");
+        if logic_path.exists() {
+            compile_args.push(logic_path.to_str().unwrap().to_string());
+        }
+    }
+    
+    compile_args.push(unity_path.to_string());
+    compile_args.push("-o".to_string());
+    compile_args.push(out_path.to_str().unwrap().to_string());
+    
     // 编译（包含Unity）
     let output = Command::new("gcc")
-        .args(&[
-            "-Wall",
-            "-Wextra",
-            "-std=c11",
-            "-I", "tests/unity",
-            path.to_str().unwrap(),
-            unity_path,
-            "-o",
-            out_path.to_str().unwrap(),
-        ])
+        .args(&compile_args)
         .output()
         .map_err(|e| format!("执行gcc失败: {}", e))?;
     

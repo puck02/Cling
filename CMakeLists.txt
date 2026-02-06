@@ -20,6 +20,7 @@ add_library(unity STATIC
     tests/unity/unity.c
 )
 target_include_directories(unity PUBLIC tests/unity)
+target_compile_definitions(unity PUBLIC UNITY_INCLUDE_DOUBLE)
 
 # 添加所有练习子目录
 add_subdirectory(exercises/00_intro)
