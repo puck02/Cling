@@ -8,6 +8,8 @@ pub fn show_progress(exercises: &ExerciseList, state: &StateFile) {
     let total = exercises.exercises.len();
     let percentage = if total > 0 { completed * 100 / total } else { 0 };
     
+    eprintln!("DEBUG: completed={}, total={}", completed, total);
+    
     let pb = ProgressBar::new(total as u64);
     pb.set_style(
         ProgressStyle::default_bar()
