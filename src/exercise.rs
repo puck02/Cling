@@ -44,22 +44,6 @@ impl Exercise {
             .join(&self.dir)
             .join(format!("{}.c", self.name))
     }
-    
-    pub fn get_hint(&self, level: usize) -> Option<String> {
-        match level {
-            0 => Some(self.hint.clone()),
-            1 => self.hint2.clone(),
-            2 => self.hint3.clone(),
-            _ => None,
-        }
-    }
-    
-    pub fn hint_count(&self) -> usize {
-        let mut count = 1; // 至少有一个hint
-        if self.hint2.is_some() { count += 1; }
-        if self.hint3.is_some() { count += 1; }
-        count
-    }
 }
 
 pub struct ExerciseList {

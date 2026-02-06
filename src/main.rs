@@ -26,8 +26,6 @@ enum Commands {
     Watch,
     /// 运行指定练习
     Run { name: String },
-    /// 显示提示
-    Hint { name: String },
     /// 列出所有练习
     List,
     /// 重置练习
@@ -60,9 +58,6 @@ fn main() {
         Some(Commands::Run { name }) => {
             run::run(&exercises, &name, &mut state);
         }
-        Some(Commands::Hint { name }) => {
-            show_hint(&exercises, &name, &state);
-        }
         Some(Commands::List) => {
             list_exercises(&exercises, &state);
         }
@@ -74,27 +69,6 @@ fn main() {
         }
         Some(Commands::CheckAll) => {
             check_all(&exercises, &mut state);
-        }
-    }
-}
-
-fn show_hint(exercises: &ExerciseList, name: &str, state: &StateFile) {
-    match exercises.find(name) {
-        Some(exercise) => {
-            let hint_level = state.get_hint_level(name);
-            println!("\n{} {}", "💡 提示:".yellow().bold(), name);
-            
-            if let Some(hint) = exercise.get_hint(hint_level) {
-                println!("{}", hint);
-                if hint_level < exercise.hint_count() - 1 {
-                    println!("\n{}", "再次运行查看更多提示...".dimmed());
-                }
-            } else {
-                println!("{}", "没有更多提示了".dimmed());
-            }
-        }
-        None => {
-            eprintln!("{} 找不到练习: {}", "错误:".red().bold(), name);
         }
     }
 }

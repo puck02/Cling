@@ -159,7 +159,6 @@ cling watch
 |------|------|
 | `cling` / `cling watch` | 启动watch模式 |
 | `cling run <name>` | 运行指定练习 |
-| `cling hint <name>` | 显示提示（可多次调用） |
 | `cling list` | 列出所有练习和状态 |
 | `cling reset <name>` | 重置练习到初始状态 |
 | `cling check` | 检查当前练习 |
