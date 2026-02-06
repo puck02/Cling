@@ -17,8 +17,10 @@ pub fn show_progress(exercises: &ExerciseList, state: &StateFile) {
     );
     pb.set_position(completed as u64);
     pb.set_message(format!("{}", "进度".cyan().bold()));
-    pb.finish();
+    pb.finish_and_clear();
     
+    // 手动显示进度信息
+    println!("{} {}/{} ({}%)", "进度".cyan().bold(), completed, total, percentage);
     println!();
 }
 
