@@ -6,12 +6,13 @@ use colored::Colorize;
 use notify::{Watcher, RecursiveMode, Event};
 use std::sync::mpsc::channel;
 use std::time::Duration;
+use crossterm::event::{self, Event as TermEvent, KeyCode, KeyEvent};
 
 pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
     println!("\n{}", exercises.welcome_message);
     println!("\n{}", "开始watch模式...".cyan().bold());
     println!("{}", "修改练习文件后会自动检测并运行".dimmed());
-    println!("\n{}", "命令: h(hint) | n(next) | r(run) | l(list) | q(quit)".yellow());
+    println!("\n{}", "命令: n(next) | r(run) | l(list) | q(quit)".yellow());
     
     // 确定当前练习
     let mut current_exercise = if let Some(current) = &state.current {
@@ -58,8 +59,36 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
             }
         }
         
-        // 这里应该检查键盘输入，但为了简化，暂时省略
-        // 可以使用 crossterm 实现非阻塞键盘输入
+        // 检查键盘输入
+        if event::poll(Duration::from_millis(10)).unwrap_or(false) {
+            if let Ok(TermEvent::Key(KeyEvent { code, .. })) = event::read() {
+                match code {
+                    KeyCode::Char('n') | KeyCode::Char('N') => {
+                        if let Some(next) = exercises.get_next(&current_exercise) {
+                            current_exercise = next.name.clone();
+                            state.set_current(&current_exercise);
+                            state.save(".cling-state.txt");
+                            println!("\n{}", format!("切换到: {}", current_exercise).cyan());
+                            check_exercise(exercises, &current_exercise, state);
+                        } else {
+                            println!("\n{}", "已经是最后一题了".yellow());
+                        }
+                    }
+                    KeyCode::Char('r') | KeyCode::Char('R') => {
+                        println!("\n{}", "重新运行...".cyan());
+                        check_exercise(exercises, &current_exercise, state);
+                    }
+                    KeyCode::Char('l') | KeyCode::Char('L') => {
+                        ui::show_progress(exercises, state);
+                    }
+                    KeyCode::Char('q') | KeyCode::Char('Q') => {
+                        println!("\n{}", "退出watch模式...".yellow());
+                        break;
+                    }
+                    _ => {}
+                }
+            }
+        }
     }
 }
 
@@ -100,8 +129,6 @@ fn check_exercise(exercises: &ExerciseList, name: &str, state: &mut StateFile) {
                 if lines.len() > 15 {
                     println!("\n{}", "... (更多错误信息被省略)".dimmed());
                 }
-                
-                println!("\n{}", format!("💡 提示: 按 'h' 查看提示").yellow());
             }
         }
     }
