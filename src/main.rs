@@ -153,4 +153,74 @@ fn check_all(exercises: &ExerciseList, state: &mut StateFile) {
     
     println!("\n{}", "=".repeat(60));
     println!("通过: {} | 失败: {}", passed.to_string().green(), failed.to_string().red());
+    
+    // 如果全部通过，显示庆祝动画
+    if failed == 0 {
+        show_completion_celebration(&exercises);
+    }
+}
+
+fn show_completion_celebration(exercises: &ExerciseList) {
+    use std::{thread, time::Duration};
+    use std::io::Write;
+    
+    // 清屏
+    print!("\x1B[2J\x1B[1;1H");
+    std::io::stdout().flush().ok();
+    
+    // 烟花动画
+    for _ in 0..3 {
+        thread::sleep(Duration::from_millis(300));
+        println!("\n\n    {}  {}  {}  {}  {}", 
+            "✨".bright_yellow(), 
+            "🎆".bright_magenta(), 
+            "✨".bright_cyan(), 
+            "🎆".bright_yellow(),
+            "✨".bright_magenta()
+        );
+        std::io::stdout().flush().ok();
+    }
+    
+    // 清屏显示最终庆祝
+    print!("\x1B[2J\x1B[1;1H");
+    
+    // ASCII鲨鱼
+    let shark = r#"
+                        /^--^\     /^--^\     /^--^\
+                        \____/     \____/     \____/
+                       /      \   /      \   /      \
+                      |        | |        | |        |
+                       \__  __/   \__  __/   \__  __/
+    |^|^|^|^|^|^|^|^|^|^|^|^\ \^|^|^|^/ /^|^|^|^|^\ \^|^|^|^|^|^|^|^|
+    | | | | | | | | | | | | |\ \| | |/ /| | | | | | \ \ | | | | | | |
+    ########################/ /######\ \###########/ /#################
+    | | | | | | | | | | | | \/| | | | \/| | | | | |\/ | | | | | | | |
+    |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+    "#;
+    
+    println!("{}", shark.bright_cyan());
+    println!();
+    println!("{}", "    ╔═══════════════════════════════════════════╗".bright_yellow());
+    println!("{}", "    ║                                           ║".bright_yellow());
+    println!("{}", "    ║   🎓 恭喜你完成了所有 58 道练习！ 🎓    ║".bright_green().bold());
+    println!("{}", "    ║                                           ║".bright_yellow());
+    println!("{}", "    ║     你已经掌握了C语言的基础知识！        ║".bright_green());
+    println!("{}", "    ║                                           ║".bright_yellow());
+    println!("{}", "    ╚═══════════════════════════════════════════╝".bright_yellow());
+    println!();
+    println!("{}", "    🏆 成就解锁：".bright_yellow().bold());
+    println!("       {} 完成 58 道练习", "✓".green());
+    println!("       {} 掌握 C11 标准", "✓".green());
+    println!("       {} 实现贪吃蛇游戏", "✓".green());
+    println!();
+    println!("{}", "    🚀 下一步建议：".bright_cyan().bold());
+    println!("       • 查看 {} 目录对比你的实现", "solutions/".yellow());
+    println!("       • 尝试优化贪吃蛇游戏性能");
+    println!("       • 开始学习数据结构与算法");
+    println!("       • 探索 Linux 系统编程");
+    println!();
+    println!("{}", exercises.final_message);
+    println!();
+    println!("{}", "    🎉🎊 Keep coding! 💻✨ 🎊🎉".bright_magenta().bold());
+    println!();
 }
