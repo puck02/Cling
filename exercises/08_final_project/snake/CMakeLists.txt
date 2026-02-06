@@ -7,4 +7,10 @@ add_executable(snake_test
 )
 target_link_libraries(snake_test unity)
 
+# 贪吃蛇游戏（可玩版本）
+add_executable(snake_game
+    snake_game.c
+    snake_logic.c
+)
+
 # 注意：完整的游戏需要实现UI和输入，这里只测试核心逻辑

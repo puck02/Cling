@@ -32,13 +32,21 @@ final_message = """
   ✅ 指针和内存管理
   ✅ 结构体和自定义类型
   ✅ 文件输入输出
+  ✅ 链表和贪吃蛇游戏
 
-现在是时候挑战最终项目了！🐍
+🎮 你的终端贪吃蛇游戏已经准备好了！
 
-前往 exercises/08_final_project/snake/ 开始构建你的终端贪吃蛇游戏。
-你将使用链表实现游戏逻辑，综合运用前面学到的所有知识点。
+运行游戏：
+  cd build
+  ./exercises/08_final_project/snake/snake_game
 
-祝你玩得开心！如果你喜欢Cling，别忘了：
+操作说明：
+  • 方向键或WASD控制蛇的移动
+  • Q键退出游戏
+  • 吃到食物得10分，蛇身变长
+  • 撞墙或咬到自己游戏结束
+
+如果你喜欢Cling，别忘了：
   • 给项目点个Star ⭐
   • 分享给你的朋友 📢
   • 贡献更多练习题 🤝
@@ -930,7 +938,7 @@ clearerr(fp) 清除错误标志。
 # ============================================================================
 
 [[exercises]]
-name = "snake_logic"
+name = "snake_test"
 dir = "08_final_project/snake"
 mode = "test"
 hint = """
