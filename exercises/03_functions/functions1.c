@@ -1,8 +1,10 @@
 #include "unity.h"
 
-// TODO: 实现加法函数
+// 学习目标: 编写第一个函数
+
+// TODO: 实现加法函数，返回两个整数的和
 int add(int a, int b) {
-    // TODO: 返回 a + b
+    // TODO: 在这里实现
     
 }
 

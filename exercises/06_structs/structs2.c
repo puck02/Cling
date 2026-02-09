@@ -1,20 +1,25 @@
 #include "unity.h"
 #include <stdlib.h>
 
+// 学习目标: 通过指针访问结构体成员 (->)
+
 typedef struct {
     int x;
     int y;
 } Point;
 
+// TODO: 创建并返回一个 Point
 Point create_point(int x, int y) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-};
-    return p;
 }
 
+// TODO: 计算两个点之间的曼哈顿距离
+// 曼哈顿距离 = |x1-x2| + |y1-y2|
+// 注意: 参数是指针，用 p1->x 访问成员
+// 提示: 绝对值可以用 if 或三元运算符实现
 int manhattan_distance(Point *p1, Point *p2) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

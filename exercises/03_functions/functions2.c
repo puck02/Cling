@@ -1,20 +1,22 @@
 #include "unity.h"
 
+// 学习目标: 实现多个基本运算函数
+
 // TODO: 实现减法函数
 int subtract(int a, int b) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
 // TODO: 实现乘法函数
 int multiply(int a, int b) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
-// TODO: 实现除法函数（整数除法）
+// TODO: 实现整数除法函数
 int divide(int a, int b) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

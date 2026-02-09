@@ -1,19 +1,30 @@
 #include "unity.h"
 
+// 学习目标: 理解常量和类型转换
+// const 声明的变量不可修改
+// 强制类型转换使用 (类型名)变量
+
 const double PI = 3.14159;
 
+// TODO: 返回 PI 的值
+// 提示: 直接返回常量 PI
 double get_pi(void) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 将 double 转换为 int（截断小数部分）
+// 例如: double_to_int(3.14) 返回 3
+// 提示: 使用强制类型转换 (int)
 int double_to_int(double value) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 将 int 转换为 double
+// 例如: int_to_double(42) 返回 42.0
 double int_to_double(int value) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

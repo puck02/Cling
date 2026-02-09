@@ -1,12 +1,18 @@
 #include "unity.h"
 
+// 学习目标: 二维数组的使用
+
+// TODO: 获取矩阵中指定位置的元素
+// matrix[row][col]
 int get_matrix_element(int matrix[3][3], int row, int col) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 计算 3x3 矩阵主对角线元素的和
+// 主对角线: matrix[0][0] + matrix[1][1] + matrix[2][2]
 int diagonal_sum(int matrix[3][3]) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
@@ -31,7 +37,6 @@ void test_diagonal_sum(void) {
         {4, 5, 6},
         {7, 8, 9}
     };
-    // 1 + 5 + 9 = 15
     TEST_ASSERT_EQUAL_INT(15, diagonal_sum(matrix));
 }
 

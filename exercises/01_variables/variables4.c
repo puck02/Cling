@@ -1,21 +1,28 @@
 #include "unity.h"
 #include <limits.h>
 
-// TODO: 实现这些函数，返回正确的值
+// 学习目标: 了解C语言各种整数类型的取值范围
+// <limits.h> 中定义了各种类型的极限值常量
 
+// TODO: 返回 char 类型的最大值
+// 提示: 使用 CHAR_MAX 常量
 int get_char_max(void) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 返回 int 类型的最小值
+// 提示: 使用 INT_MIN 常量
 int get_int_min(void) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 返回 long 类型的最大值
+// 提示: 使用 LONG_MAX 常量
 long get_long_max(void) {
-    // 返回long类型的最大值（使用LONG_MAX常量）
-    return LONG_MAX;
+    // TODO: 在这里实现
+    
 }
 
 void setUp(void) {}

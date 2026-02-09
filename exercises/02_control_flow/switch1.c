@@ -10,14 +10,15 @@ typedef enum {
     SUNDAY
 } DayOfWeek;
 
-// TODO: 实现这个函数
-// 如果是工作日(MONDAY-FRIDAY)返回1
-// 如果是周末(SATURDAY-SUNDAY)返回0
-// 提示：使用switch语句，不要忘记break
+// 学习目标: 使用 switch 语句
+
+// TODO: 判断是否是工作日
+// 工作日 (MONDAY ~ FRIDAY) 返回 1
+// 周末 (SATURDAY, SUNDAY) 返回 0
+// 提示: 用 switch + case，别忘了 break 和 default
 int is_weekday(DayOfWeek day) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-}
 }
 
 void setUp(void) {}

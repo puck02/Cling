@@ -1,14 +1,17 @@
 #include "unity.h"
 
+// 学习目标: 理解C字符串（以 '\0' 结尾的字符数组）
+
+// TODO: 手动计算字符串长度（不使用 strlen）
+// 提示: 遍历直到遇到 '\0'
 int string_length(const char *str) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
-    return len;
-}
 
+// TODO: 返回字符串的第一个字符
 char first_char(const char *str) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

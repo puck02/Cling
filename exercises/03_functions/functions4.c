@@ -1,24 +1,17 @@
 #include "unity.h"
 
-// TODO: 实现这个函数
-// 返回两个数中的较大值
-// 提示：使用if语句和return
+// 学习目标: 函数中使用 if/else 返回不同的值
+
+// TODO: 返回两个数中的较大值
 int max(int a, int b) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-} else {
-        return b;
-    }
 }
 
-// TODO: 实现这个函数
-// 返回两个数中的较小值
+// TODO: 返回两个数中的较小值
 int min(int a, int b) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-} else {
-        return b;
-    }
 }
 
 void setUp(void) {}

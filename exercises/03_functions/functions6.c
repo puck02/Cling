@@ -1,19 +1,18 @@
 #include "unity.h"
 
-// 全局变量
+// 学习目标: 理解全局变量和函数的关系
+
 int global_counter = 0;
 
-// TODO: 实现这个函数
-// 增加global_counter并返回新值
+// TODO: 将 global_counter 加 1，并返回新的值
 int increment_counter(void) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
-// TODO: 实现这个函数
-// 重置global_counter为0
+// TODO: 将 global_counter 重置为 0
 void reset_counter(void) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

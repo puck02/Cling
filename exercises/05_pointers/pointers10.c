@@ -1,27 +1,21 @@
 #include "unity.h"
 #include <stdlib.h>
 
-// TODO: 实现这个函数
-// 安全地解引用指针
-// 如果ptr是NULL，返回default_value
-// 否则返回*ptr
+// 学习目标: NULL 指针的安全处理
+
+// TODO: 安全解引用指针
+// 如果 ptr 是 NULL，返回 default_value
+// 否则返回 *ptr
 int safe_dereference(int *ptr, int default_value) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
-    return *ptr;
-}
 
-// TODO: 实现这个函数
-// 查找数组中第一个等于target的元素
-// 返回指向该元素的指针，如果没找到返回NULL
+// TODO: 在数组中查找目标值
+// 找到返回指向该元素的指针，没找到返回 NULL
 int* find_element(int *arr, int size, int target) {
-    for (int i = 0; i < size; i++) {
-        if (arr[i] == target) {
-            return &arr[i];
-        }
-    }
-    return NULL;
+    // TODO: 在这里实现
+    
 }
 
 void setUp(void) {}
@@ -35,11 +29,11 @@ void test_safe_dereference(void) {
 
 void test_find_element(void) {
     int arr[] = {1, 2, 3, 4, 5};
-    
+
     int *ptr = find_element(arr, 5, 3);
     TEST_ASSERT_NOT_NULL(ptr);
     TEST_ASSERT_EQUAL_INT(3, *ptr);
-    
+
     ptr = find_element(arr, 5, 10);
     TEST_ASSERT_NULL(ptr);
 }

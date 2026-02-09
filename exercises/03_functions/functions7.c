@@ -1,24 +1,23 @@
 #include "unity.h"
 
-// TODO: 实现递归函数
-// 计算斐波那契数列的第n项
+// 学习目标: 理解递归函数
+// 递归 = 函数调用自己
+// 关键: 1. 基础情况（终止条件） 2. 递归情况（缩小问题）
+
+// TODO: 用递归计算斐波那契数列的第 n 项
 // fib(0) = 0, fib(1) = 1
 // fib(n) = fib(n-1) + fib(n-2)
 int fibonacci(int n) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-}
-    return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
-// TODO: 实现递归函数
-// 计算x的n次方
-// 提示：power(x, n) = x * power(x, n-1)
+// TODO: 用递归计算 x 的 n 次方
+// power(x, 0) = 1（基础情况）
+// power(x, n) = x * power(x, n-1)
 int power(int x, int n) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-}
-    return x * power(x, n - 1);
 }
 
 void setUp(void) {}

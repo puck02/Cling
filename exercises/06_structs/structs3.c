@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+// 学习目标: 嵌套结构体
+
 typedef struct {
     int x;
     int y;
@@ -17,8 +19,12 @@ Rectangle create_rectangle(int x1, int y1, int x2, int y2) {
     return rect;
 }
 
+// TODO: 计算矩形的面积
+// 面积 = 宽 * 高
+// 宽 = |bottom_right.x - top_left.x|
+// 高 = |bottom_right.y - top_left.y|
 int rectangle_area(Rectangle *rect) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

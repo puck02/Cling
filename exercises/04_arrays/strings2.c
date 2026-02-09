@@ -1,24 +1,21 @@
 #include "unity.h"
 #include <string.h>
 
+// 学习目标: 实现字符串复制和拼接
+
+// TODO: 手动实现字符串复制（不使用 strcpy）
+// 逐字符复制 src 到 dest，包括末尾的 '\0'
 void my_strcpy(char *dest, const char *src) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-}
-    dest[i] = '\0';
 }
 
+// TODO: 手动实现字符串拼接（不使用 strcat）
+// 将 src 追加到 dest 的末尾
+// 提示: 先找到 dest 的末尾，再从那里开始复制
 void my_strcat(char *dest, const char *src) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-}
-    int j = 0;
-    while (src[j] != '\0') {
-        dest[i] = src[j];
-        i++;
-        j++;
-    }
-    dest[i] = '\0';
 }
 
 void setUp(void) {}

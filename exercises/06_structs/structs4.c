@@ -1,22 +1,26 @@
 #include "unity.h"
 #include <string.h>
 
+// 学习目标: 结构体中使用字符串
+
 typedef struct {
     char name[50];
     int age;
     double score;
 } Student;
 
+// TODO: 创建并返回一个 Student 结构体
+// 提示: 用 strcpy 复制字符串到 s.name
 Student create_student(const char *name, int age, double score) {
-    Student s;
-    strcpy(s.name, name);
-    s.age = age;
-    s.score = score;
-    return s;
+    // TODO: 在这里实现
+    
 }
 
+// TODO: 判断学生是否及格（分数 >= 60 为及格）
+// 及格返回 1，不及格返回 0
+// 注意: 参数是指针，用 s->score 访问
 int is_passing(Student *s) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

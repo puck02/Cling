@@ -1,12 +1,22 @@
 #include "unity.h"
 
+// 学习目标: 理解整数除法与浮点除法的区别
+// 在C语言中，两个整数相除结果仍是整数（小数部分被丢弃）
+// 要得到浮点结果，至少一个操作数必须是浮点类型
+
+// TODO: 实现函数，计算两个整数的平均值（返回浮点结果）
+// 例如: calculate_average(2, 3) 应返回 2.5 而不是 2
+// 提示: 想想怎样让除法产生浮点结果？
 double calculate_average(int a, int b) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 实现函数，将百分比转为小数
+// 例如: scale_percentage(75) 应返回 0.75
+// 提示: 注意 75 / 100 在整数运算中等于 0
 float scale_percentage(int percentage) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

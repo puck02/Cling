@@ -1,16 +1,12 @@
 #include "unity.h"
 
-// TODO: 实现这个函数
-// 返回三个数中的最大值
-// 提示：使用嵌套的if/else或多个else if
+// 学习目标: 使用嵌套的 if/else 处理多个条件
+
+// TODO: 返回三个数中的最大值
+// 提示: 可以用嵌套 if/else，也可以用多个 else if
 int max_of_three(int a, int b, int c) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-} else if (b >= a && b >= c) {
-        return b;
-    } else {
-        return c;
-    }
 }
 
 void setUp(void) {}

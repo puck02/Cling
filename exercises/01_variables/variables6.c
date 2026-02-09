@@ -1,25 +1,34 @@
 #include "unity.h"
 #include <stddef.h>
 
-// TODO: 实现这些函数来返回类型或变量的大小
+// 学习目标: 理解 sizeof 运算符
+// sizeof 返回类型或变量所占的字节数
+// 用法: sizeof(int)  sizeof(变量名)  sizeof(数组名)
 
+// TODO: 返回 int 类型占用的字节数
+// 提示: 使用 sizeof(int)
 size_t get_int_size(void) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 返回 double 类型占用的字节数
 size_t get_double_size(void) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 返回指针类型占用的字节数
+// 提示: 使用 sizeof(void*)
 size_t get_pointer_size(void) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 返回一个包含10个int元素的数组占用的总字节数
+// 提示: 声明 int arr[10]，然后返回 sizeof(arr)
 size_t get_array_size(void) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

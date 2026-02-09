@@ -1,19 +1,21 @@
 #include "unity.h"
 
-// 函数指针示例
+// 学习目标: 函数指针 - 将函数作为参数传递
+
+// TODO: 实现加法函数
 int add(int a, int b) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 实现减法函数
 int subtract(int a, int b) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
-// TODO: 实现这个函数
-// 使用函数指针调用函数
-// operation: 函数指针（指向接受两个int参数并返回int的函数）
+// apply_operation 接受一个函数指针参数，调用它并返回结果
+// operation 是一个指向 "接受两个int参数并返回int" 的函数指针
 int apply_operation(int (*operation)(int, int), int a, int b) {
     return operation(a, b);
 }

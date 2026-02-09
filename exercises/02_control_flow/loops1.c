@@ -1,14 +1,13 @@
 #include "unity.h"
 
-// TODO: 实现这个函数
-// 返回从1到n的所有数字的和
-// 例如：sum_to_n(5) = 1 + 2 + 3 + 4 + 5 = 15
-// 提示：使用for循环
+// 学习目标: 使用 for 循环
+
+// TODO: 计算从 1 到 n 的所有整数之和
+// 例如: sum_to_n(5) = 1 + 2 + 3 + 4 + 5 = 15
+// 提示: 使用 for 循环，声明一个变量累加
 int sum_to_n(int n) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-}
-    return sum;
 }
 
 void setUp(void) {}

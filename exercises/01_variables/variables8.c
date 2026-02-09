@@ -1,17 +1,28 @@
 #include "unity.h"
 
+// 学习目标: 综合运用类型转换进行数值计算
+
+// TODO: 实现四舍五入函数
+// 将 double 转为最接近的整数
+// 例如: round_to_int(2.5) 返回 3, round_to_int(2.3) 返回 2
+// 提示: 加 0.5 再强制转换为 int
 int round_to_int(double value) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 摄氏度转华氏度
+// 公式: F = C * 9.0 / 5.0 + 32
+// 注意: 必须用浮点除法，不能用整数除法
 double celsius_to_fahrenheit(int celsius) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 华氏度转摄氏度
+// 公式: C = (F - 32) * 5.0 / 9.0
 double fahrenheit_to_celsius(int fahrenheit) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

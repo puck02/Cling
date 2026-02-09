@@ -1,29 +1,29 @@
 #include "unity.h"
 
-// 学习目标：理解递归的基本概念
-// 递归函数会调用自己来解决问题
+// 学习目标: 更多递归练习
 
-// TODO: 实现递归求和函数
-// 计算 1 + 2 + 3 + ... + n
-// 思考：基础情况是什么？递归情况如何表达？
+// TODO: 用递归计算 1 + 2 + ... + n
+// 基础情况: sum_recursive(0) = 0
+// 递归情况: sum_recursive(n) = n + sum_recursive(n-1)
 int sum_recursive(int n) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
-// TODO: 实现递归倒数乘积函数
-// 计算从n递减到1的乘积：countdown_product(5) = 5*4*3*2*1 = 120
-// 思考：这和阶乘(factorial)类似
+// TODO: 用递归计算阶乘（与 loops2 中的循环版本对比）
+// 基础情况: countdown_product(1) = 1
+// 递归情况: countdown_product(n) = n * countdown_product(n-1)
 int countdown_product(int n) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
-// TODO: 实现递归计数函数
-// 计算一个数有多少位数字
-// 例如：count_digits(1234) = 4
+// TODO: 用递归计算一个正整数有几位数字
+// 例如: count_digits(1234) = 4
+// 基础情况: n < 10 时返回 1
+// 递归情况: 1 + count_digits(n / 10)
 int count_digits(int n) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

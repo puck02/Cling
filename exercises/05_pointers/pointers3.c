@@ -1,17 +1,17 @@
 #include "unity.h"
 
-// TODO: 实现这个函数
-// 返回数组中第n个元素的值（使用指针算术）
-// 提示：ptr + n 指向第n个元素
+// 学习目标: 指针算术 - 通过指针偏移访问数组元素
+
+// TODO: 使用指针算术获取数组第 n 个元素
+// *(ptr + n) 等同于 ptr[n]
 int get_nth_element(int *ptr, int n) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
-// TODO: 实现这个函数
-// 设置数组中第n个元素的值（使用指针算术）
+// TODO: 使用指针算术设置数组第 n 个元素
 void set_nth_element(int *ptr, int n, int value) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

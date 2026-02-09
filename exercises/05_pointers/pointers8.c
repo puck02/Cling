@@ -1,27 +1,27 @@
 #include "unity.h"
 
-// 比较函数类型定义
+// 学习目标: 使用函数指针实现通用排序
+
 typedef int (*compare_func)(int, int);
 
+// TODO: 实现比较函数 - 如果 a < b 返回 1，否则返回 0
 int less_than(int a, int b) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
+// TODO: 实现比较函数 - 如果 a > b 返回 1，否则返回 0
 int greater_than(int a, int b) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
-// TODO: 实现这个函数
-// 使用比较函数对数组排序（冒泡排序）
-// 提示：使用compare函数指针来决定排序顺序
+// TODO: 使用冒泡排序和比较函数对数组排序
+// compare 返回 1 表示需要交换
+// 提示: 两层循环，如果 compare(arr[j], arr[j+1]) 为真则交换
 void sort_array(int *arr, int size, compare_func compare) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-}
-        }
-    }
 }
 
 void setUp(void) {}

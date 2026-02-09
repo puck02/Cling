@@ -1,17 +1,17 @@
 #include "unity.h"
 
-// TODO: 实现这个函数
-// 返回数组中指定索引的元素
-// arr: 数组指针, index: 索引
+// 学习目标: 通过索引访问和修改数组元素
+
+// TODO: 返回数组中指定索引的元素
+// 例如: get_element({10,20,30}, 1) 返回 20
 int get_element(int arr[], int index) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
-// TODO: 实现这个函数
-// 设置数组中指定索引的元素值
+// TODO: 设置数组中指定索引的元素值
 void set_element(int arr[], int index, int value) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

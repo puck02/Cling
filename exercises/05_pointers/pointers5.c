@@ -1,20 +1,18 @@
 #include "unity.h"
 
-// TODO: 实现这个函数
-// 使用指针反转数组
-// 提示：交换首尾元素，然后向中间移动
+// 学习目标: 使用指针反转和复制数组
+
+// TODO: 使用指针反转数组（原地修改）
+// 提示: 交换首尾元素，指针向中间移动
 void reverse_array(int *arr, int size) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-}
 }
 
-// TODO: 实现这个函数
-// 通过指针复制数组
+// TODO: 通过指针将 src 数组复制到 dest
 void copy_array(int *dest, int *src, int size) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-}
 }
 
 void setUp(void) {}

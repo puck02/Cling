@@ -1,14 +1,15 @@
 #include "unity.h"
 
-// TODO: 定义Point结构体
-// 包含两个int成员：x和y
-typedef struct {
-    int x;
-    int y;
-} Point;
+// 学习目标: 定义结构体和创建结构体实例
 
+// TODO: 定义一个 Point 结构体，包含两个 int 成员: x 和 y
+// 格式: typedef struct { ... } Point;
+
+
+// TODO: 创建并返回一个 Point
+// 设置 p.x = x, p.y = y，然后返回 p
 Point create_point(int x, int y) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 

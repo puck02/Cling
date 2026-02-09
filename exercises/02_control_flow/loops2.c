@@ -1,14 +1,14 @@
 #include "unity.h"
 
-// TODO: 实现这个函数
-// 计算n的阶乘 (n!)
-// 例如：factorial(5) = 5 * 4 * 3 * 2 * 1 = 120
-// 提示：使用while循环
+// 学习目标: 使用 while 循环
+
+// TODO: 计算 n 的阶乘 (n!)
+// factorial(5) = 5 * 4 * 3 * 2 * 1 = 120
+// factorial(0) = 1（特殊情况）
+// 提示: 使用 while 循环，从 n 递减到 1
 int factorial(int n) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
-}
-    return result;
 }
 
 void setUp(void) {}

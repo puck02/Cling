@@ -1,17 +1,18 @@
 #include "unity.h"
 
-// TODO: 实现这个函数
-// 通过指针修改变量的值
-// ptr: 指向int的指针, value: 要设置的新值
+// 学习目标: 通过指针读写变量的值
+
+// TODO: 通过指针设置变量的值
+// *ptr = value
 void set_value(int *ptr, int value) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
-// TODO: 实现这个函数
-// 通过指针读取变量的值
+// TODO: 通过指针读取变量的值
+// return *ptr
 int get_value(int *ptr) {
-    // TODO: 实现这个函数
+    // TODO: 在这里实现
     
 }
 
