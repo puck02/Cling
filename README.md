@@ -57,7 +57,7 @@ curl -fsSL https://raw.githubusercontent.com/puck02/Cling/main/scripts/install.s
 
 安装完成后运行：
 ```bash
-./cling watch
+cling watch
 ```
 
 ---
