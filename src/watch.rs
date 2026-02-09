@@ -5,7 +5,7 @@ use crate::ui;
 use colored::Colorize;
 use notify::{Watcher, RecursiveMode, Event};
 use std::sync::mpsc::channel;
-use std::time::Duration;
+use std::time::{Duration, Instant};
 use crossterm::event::{self, Event as TermEvent, KeyCode, KeyEvent};
 
 pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
@@ -53,6 +53,10 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
         RecursiveMode::Recursive,
     ).expect("监控目录失败");
     
+    // 防抖：记录上次检查时间，避免短时间内重复检查
+    let mut last_check_time = Instant::now();
+    let debounce_duration = Duration::from_millis(500); // 500ms 内的重复事件忽略
+    
     // 主循环
     loop {
         // 检查文件变化
@@ -61,13 +65,17 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
             if let Some(exercise) = exercises.find(&current_exercise) {
                 let path = exercise.path();
                 if event.paths.iter().any(|p| p == &path) {
-                    println!("\n{}", "检测到文件变化...".yellow());
-                    // 文件变化时检查，通过则自动跳到下一题
-                    if check_exercise(exercises, &current_exercise, state) {
-                        if let Some(next) = exercises.get_next(&current_exercise) {
-                            current_exercise = next.name.clone();
-                            state.set_current(&current_exercise);
-                            state.save(".cling-state.txt");
+                    // 防抖：如果距离上次检查不到 500ms，忽略此次事件
+                    if last_check_time.elapsed() >= debounce_duration {
+                        println!("\n{}", "检测到文件变化...".yellow());
+                        last_check_time = Instant::now();
+                        // 文件变化时检查，通过则自动跳到下一题
+                        if check_exercise(exercises, &current_exercise, state) {
+                            if let Some(next) = exercises.get_next(&current_exercise) {
+                                current_exercise = next.name.clone();
+                                state.set_current(&current_exercise);
+                                state.save(".cling-state.txt");
+                            }
                         }
                     }
                 }
@@ -85,6 +93,7 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
                             state.set_current(&current_exercise);
                             state.save(".cling-state.txt");
                             println!("\n{}", format!("切换到: {}", current_exercise).cyan());
+                            last_check_time = Instant::now(); // 更新时间，避免文件监控重复触发
                             check_exercise(exercises, &current_exercise, state);
                         } else {
                             println!("\n{}", "已经是最后一题了".yellow());
@@ -93,6 +102,7 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
                     KeyCode::Char('r') | KeyCode::Char('R') => {
                         // r 检查当前题，通过则自动跳到下一题
                         println!("\n{}", "重新运行...".cyan());
+                        last_check_time = Instant::now(); // 更新时间，避免文件监控重复触发
                         if check_exercise(exercises, &current_exercise, state) {
                             if let Some(next) = exercises.get_next(&current_exercise) {
                                 current_exercise = next.name.clone();
