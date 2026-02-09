@@ -9,13 +9,12 @@
 // 提示：使用 malloc 分配内存，记得检查返回值
 SnakeNode* snake_node_create(int x, int y) {
     // TODO: 分配 SnakeNode 内存
-    SnakeNode *node = NULL;  // 你的代码：node = (SnakeNode*)malloc(sizeof(SnakeNode));
+    SnakeNode *node = NULL;  // 你的代码：node = (SnakeNode*)malloc(...);
     if (node == NULL) {
         return NULL;
     }
-    node->pos.x = x;
-    node->pos.y = y;
-    node->next = NULL;
+    // TODO: 初始化节点的 pos.x, pos.y 和 next
+    
     return node;
 }
 
@@ -35,7 +34,7 @@ void snake_insert_head(Snake *snake, int x, int y) {
     }
     
     // TODO: 将新节点链接到链表头部
-    new_head->next = NULL;  // 你的代码：new_head->next = snake->head;
+    new_head->next = NULL;  // 你的代码：应该指向谁？
     snake->head = new_head;
     
     if (snake->tail == NULL) {
@@ -49,7 +48,7 @@ void snake_insert_head(Snake *snake, int x, int y) {
 // 练习 3: 删除链表尾部节点
 // ============================================================================
 // 功能：删除蛇尾（蛇移动且没吃食物时使用）
-// 提示：需要找到倒数第二个节点，条件是 current->next != snake->tail
+// 提示：需要找到倒数第二个节点，条件是？
 void snake_remove_tail(Snake *snake) {
     if (snake == NULL || snake->head == NULL) {
         return;
@@ -65,7 +64,7 @@ void snake_remove_tail(Snake *snake) {
     
     SnakeNode *current = snake->head;
     // TODO: 找到倒数第二个节点
-    while (current != NULL) {  // 你的代码：while (current->next != snake->tail)
+    while (current != NULL) {  // 你的代码：循环条件应该是什么？
         current = current->next;
     }
     
@@ -140,8 +139,8 @@ void food_generate(Food *food, Snake *snake, int width, int height) {
     bool valid = false;
     while (!valid) {
         // TODO: 生成随机坐标
-        food->pos.x = 0;  // 你的代码：food->pos.x = rand() % width;
-        food->pos.y = 0;  // 你的代码：food->pos.y = rand() % height;
+        food->pos.x = 0;  // 你的代码：使用 rand() % width
+        food->pos.y = 0;  // 你的代码：使用 rand() % height
         
         // 检查是否与蛇身重合
         valid = true;
