@@ -1,6 +1,35 @@
 use crate::exercise::{Exercise, Mode};
 use std::process::{Command, Stdio};
 use std::fs;
+use std::env;
+
+/// 查找 gcc 编译器路径
+/// 优先使用项目本地的 mingw64/bin/gcc（Windows 便携安装），否则用系统 PATH 中的 gcc
+fn find_gcc() -> String {
+    // 尝试找到 cling.exe 所在目录下的 mingw64/bin/gcc
+    if let Ok(exe_path) = env::current_exe() {
+        if let Some(exe_dir) = exe_path.parent() {
+            let local_gcc = exe_dir.join("mingw64").join("bin").join("gcc.exe");
+            if local_gcc.exists() {
+                return local_gcc.to_string_lossy().to_string();
+            }
+        }
+    }
+    // 也检查当前工作目录下的 mingw64/bin/gcc
+    if let Ok(cwd) = env::current_dir() {
+        let local_gcc = cwd.join("mingw64").join("bin").join("gcc.exe");
+        if local_gcc.exists() {
+            return local_gcc.to_string_lossy().to_string();
+        }
+        // Unix 路径（无 .exe）
+        let local_gcc = cwd.join("mingw64").join("bin").join("gcc");
+        if local_gcc.exists() {
+            return local_gcc.to_string_lossy().to_string();
+        }
+    }
+    // 回退到系统 PATH
+    "gcc".to_string()
+}
 
 pub fn verify(exercise: &Exercise) -> Result<String, String> {
     let path = exercise.path();
@@ -18,9 +47,10 @@ pub fn verify(exercise: &Exercise) -> Result<String, String> {
 fn verify_compile(exercise: &Exercise) -> Result<String, String> {
     let path = exercise.path();
     let out_path = path.with_extension("out");
+    let gcc = find_gcc();
     
     // 编译
-    let output = Command::new("gcc")
+    let output = Command::new(&gcc)
         .args(&[
             "-Wall",
             "-Wextra",
@@ -71,8 +101,10 @@ fn verify_test(exercise: &Exercise) -> Result<String, String> {
     compile_args.push("-o".to_string());
     compile_args.push(out_path.to_str().unwrap().to_string());
     
+    let gcc = find_gcc();
+    
     // 编译（包含Unity）
-    let output = Command::new("gcc")
+    let output = Command::new(&gcc)
         .args(&compile_args)
         .output()
         .map_err(|e| format!("执行gcc失败: {}", e))?;

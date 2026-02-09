@@ -61,6 +61,7 @@ if (!(Test-Path "mingw64\bin\gcc.exe")) {
 # Create cling.bat wrapper
 $batContent = @"
 @echo off
+set PATH=%~dp0mingw64\bin;%PATH%
 "%~dp0cling.exe" %*
 "@
 Set-Content -Path "cling.bat" -Value $batContent -Encoding ASCII
