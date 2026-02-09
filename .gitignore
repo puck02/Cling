@@ -8,6 +8,9 @@ target/
 *.so
 *.dylib
 
+# Portable MinGW (downloaded by install script)
+mingw64/
+
 # CMake
 CMakeCache.txt
 CMakeFiles/
