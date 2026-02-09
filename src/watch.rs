@@ -6,7 +6,7 @@ use colored::Colorize;
 use notify::{Watcher, RecursiveMode, Event};
 use std::sync::mpsc::channel;
 use std::time::{Duration, Instant};
-use crossterm::event::{self, Event as TermEvent, KeyCode, KeyEvent};
+use crossterm::event::{self, Event as TermEvent, KeyCode, KeyEvent, KeyEventKind};
 
 pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
     println!("\n{}", exercises.welcome_message);
@@ -84,7 +84,12 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
         
         // 检查键盘输入
         if event::poll(Duration::from_millis(10)).unwrap_or(false) {
-            if let Ok(TermEvent::Key(KeyEvent { code, .. })) = event::read() {
+            if let Ok(TermEvent::Key(KeyEvent { code, kind, .. })) = event::read() {
+                // 只响应按下事件，忽略重复和释放
+                if kind != KeyEventKind::Press {
+                    continue;
+                }
+                
                 match code {
                     KeyCode::Char('n') | KeyCode::Char('N') => {
                         // n 只跳一题，检查但不自动再跳

@@ -73,6 +73,19 @@ $pathScript = @"
 "@
 Set-Content -Path "cling.ps1" -Value $pathScript -Encoding UTF8
 
+# 添加到用户 PATH 环境变量（永久）
+$clingPath = (Get-Location).Path
+$userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+if ($userPath -notlike "*$clingPath*") {
+    Write-Host "添加 Cling 到 PATH 环境变量..." -ForegroundColor Yellow
+    $newPath = "$clingPath;$userPath"
+    [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
+    $env:Path = "$clingPath;$env:Path"  # 立即生效（当前会话）
+    Write-Host "✓ PATH 已更新" -ForegroundColor Green
+} else {
+    Write-Host "Cling 已在 PATH 中" -ForegroundColor Green
+}
+
 Write-Host ""
 Write-Host "=========================" -ForegroundColor Green
 Write-Host "  安装完成！" -ForegroundColor Green
@@ -81,9 +94,10 @@ Write-Host ""
 Write-Host "快速开始:" -ForegroundColor Yellow
 if (Test-Path "cling.exe") {
     Write-Host ""
-    Write-Host "  .\cling watch" -ForegroundColor Cyan -BackgroundColor DarkGray
+    Write-Host "  cling watch" -ForegroundColor Cyan -BackgroundColor DarkGray
     Write-Host ""
-    Write-Host "注意: PowerShell 需要用 .\ 前缀来运行当前目录的程序" -ForegroundColor DarkYellow
+    Write-Host "注意: 如果命令找不到，请重启 PowerShell 或运行:" -ForegroundColor DarkYellow
+    Write-Host "  .\cling watch" -ForegroundColor DarkGray
     Write-Host ""
     Write-Host "然后修改 exercises 目录下的练习文件即可自动编译测试！" -ForegroundColor White
 } else {
