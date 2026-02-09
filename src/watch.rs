@@ -69,12 +69,14 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
                     if last_check_time.elapsed() >= debounce_duration {
                         println!("\n{}", "检测到文件变化...".yellow());
                         last_check_time = Instant::now();
-                        // 文件变化时检查，通过则自动跳到下一题
+                        // 文件变化时检查，通过则自动跳到下一题并检查
                         if check_exercise(exercises, &current_exercise, state) {
                             if let Some(next) = exercises.get_next(&current_exercise) {
                                 current_exercise = next.name.clone();
                                 state.set_current(&current_exercise);
                                 state.save(".cling-state.txt");
+                                // 检查下一题
+                                check_exercise(exercises, &current_exercise, state);
                             }
                         }
                     }
@@ -105,7 +107,7 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
                         }
                     }
                     KeyCode::Char('r') | KeyCode::Char('R') => {
-                        // r 检查当前题，通过则自动跳到下一题
+                        // r 检查当前题，通过则自动跳到下一题并检查
                         println!("\n{}", "重新运行...".cyan());
                         last_check_time = Instant::now(); // 更新时间，避免文件监控重复触发
                         if check_exercise(exercises, &current_exercise, state) {
@@ -113,6 +115,8 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
                                 current_exercise = next.name.clone();
                                 state.set_current(&current_exercise);
                                 state.save(".cling-state.txt");
+                                // 检查下一题
+                                check_exercise(exercises, &current_exercise, state);
                             }
                         }
                     }
