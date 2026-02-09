@@ -58,16 +58,21 @@ if (!(Test-Path "mingw64\bin\gcc.exe")) {
     Write-Host "GCC 已存在" -ForegroundColor Green
 }
 
+# Add to PATH for current session
+$currentPath = (Get-Location).Path
+$mingwPath = Join-Path $currentPath "mingw64\bin"
+$env:Path = "$currentPath;$mingwPath;$env:Path"
+
 Write-Host ""
 Write-Host "安装完成！" -ForegroundColor Green
 Write-Host ""
 Write-Host "快速开始:" -ForegroundColor Yellow
 if (Test-Path "cling.exe") {
-    Write-Host "  .\cling.exe watch" -ForegroundColor Cyan
+    Write-Host "  cling watch" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "然后修改 exercises 目录下的练习文件即可自动编译测试！" -ForegroundColor White
 } else {
-    Write-Host "  .\mingw64\bin\gcc.exe exercises\00_intro\intro1.c -o intro1.exe" -ForegroundColor Cyan
+    Write-Host "  gcc exercises\00_intro\intro1.c -o intro1.exe" -ForegroundColor Cyan
     Write-Host "  .\intro1.exe" -ForegroundColor Cyan
 }
 Write-Host ""
