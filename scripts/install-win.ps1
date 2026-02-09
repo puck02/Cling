@@ -58,17 +58,26 @@ if (!(Test-Path "mingw64\bin\gcc.exe")) {
     Write-Host "GCC 已存在" -ForegroundColor Green
 }
 
-# Add to PATH for current session
-$currentPath = (Get-Location).Path
-$mingwPath = Join-Path $currentPath "mingw64\bin"
-$env:Path = "$currentPath;$mingwPath;$env:Path"
+# Create cling.bat wrapper
+$batContent = @"
+@echo off
+"%~dp0cling.exe" %*
+"@
+Set-Content -Path "cling.bat" -Value $batContent -Encoding ASCII
+
+# Create PowerShell wrapper for PATH
+$pathScript = @"
+`$env:Path = "`$PSScriptRoot;`$PSScriptRoot\mingw64\bin;`$env:Path"
+& "`$PSScriptRoot\cling.exe" @args
+"@
+Set-Content -Path "cling.ps1" -Value $pathScript -Encoding UTF8
 
 Write-Host ""
 Write-Host "安装完成！" -ForegroundColor Green
 Write-Host ""
 Write-Host "快速开始:" -ForegroundColor Yellow
 if (Test-Path "cling.exe") {
-    Write-Host "  cling watch" -ForegroundColor Cyan
+    Write-Host "  .\cling watch" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "然后修改 exercises 目录下的练习文件即可自动编译测试！" -ForegroundColor White
 } else {
