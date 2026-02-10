@@ -1,20 +1,18 @@
-# Cling 一键安装脚本 (Windows PowerShell)
+# Cubytes 一键安装脚本 (Windows PowerShell)
 # 使用方法: 以管理员身份运行 PowerShell，执行:
-# iwr -useb https://raw.githubusercontent.com/puck02/Cling/main/scripts/install.ps1 | iex
+# iwr -useb https://raw.githubusercontent.com/puck02/Cubytes/main/scripts/install.ps1 | iex
 
 $ErrorActionPreference = "Stop"
 
 Write-Host ""
-Write-Host "  _____ _ _             " -ForegroundColor Cyan
-Write-Host " / ____| (_)            " -ForegroundColor Cyan
-Write-Host "| |    | |_ _ __   __ _ " -ForegroundColor Cyan
-Write-Host "| |    | | | '_ \ / _`` |" -ForegroundColor Cyan
-Write-Host "| |____| | | | | | (_| |" -ForegroundColor Cyan
-Write-Host " \_____|_|_|_| |_|\__, |" -ForegroundColor Cyan
-Write-Host "                   __/ |" -ForegroundColor Cyan
-Write-Host "                  |___/ " -ForegroundColor Cyan
+Write-Host "  _____ _           _            " -ForegroundColor Cyan
+Write-Host " / ____| |         | |           " -ForegroundColor Cyan
+Write-Host "| |    | |_   _ ___| |_ ___  ___ " -ForegroundColor Cyan
+Write-Host "| |    | | | | / __| __/ _ \/ __|" -ForegroundColor Cyan
+Write-Host "| |____| | |_| \__ \ ||  __/\__ \" -ForegroundColor Cyan
+Write-Host " \_____|_|\__,_|___/\__\___||___/" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "Cling - C语言快速入门练习系统" -ForegroundColor Green
+Write-Host "Cubytes - C语言快速入门练习系统" -ForegroundColor Green
 Write-Host ""
 
 # 检查是否以管理员身份运行
@@ -76,22 +74,22 @@ if (-not (Get-Command cmake -ErrorAction SilentlyContinue)) {
     Write-Host "  ✓ 已安装 $cmakeVersion" -ForegroundColor Green
 }
 
-# 下载并安装Cling
+# 下载并安装Cubytes
 Write-Host ""
-Write-Host "[4/4] 安装Cling..." -ForegroundColor Blue
+Write-Host "[4/4] 安装Cubytes..." -ForegroundColor Blue
 
-$ClingVersion = "v0.1.0"
-$InstallDir = "$env:LOCALAPPDATA\Cling"
-$DownloadUrl = "https://github.com/puck02/Cling/releases/download/$ClingVersion/cling-windows-x86_64.exe"
+$CubytesVersion = "v0.1.0"
+$InstallDir = "$env:LOCALAPPDATA\Cubytes"
+$DownloadUrl = "https://github.com/puck02/Cubytes/releases/download/$CubytesVersion/cubytes-windows-x86_64.exe"
 
 # 创建安装目录
 if (-not (Test-Path $InstallDir)) {
     New-Item -ItemType Directory -Path $InstallDir -Force | Out-Null
 }
 
-Write-Host "  下载 cling-windows-x86_64.exe..." -ForegroundColor White
+Write-Host "  下载 cubytes-windows-x86_64.exe..." -ForegroundColor White
 $ProgressPreference = 'SilentlyContinue'
-Invoke-WebRequest -Uri $DownloadUrl -OutFile "$InstallDir\cling.exe"
+Invoke-WebRequest -Uri $DownloadUrl -OutFile "$InstallDir\cubytes.exe"
 $ProgressPreference = 'Continue'
 
 # 添加到PATH
@@ -102,7 +100,7 @@ if ($currentPath -notlike "*$InstallDir*") {
     Write-Host "  已添加到系统PATH" -ForegroundColor White
 }
 
-Write-Host "  ✓ Cling 安装完成" -ForegroundColor Green
+Write-Host "  ✓ Cubytes 安装完成" -ForegroundColor Green
 
 # 验证安装
 Write-Host ""
@@ -118,16 +116,16 @@ gcc --version 2>$null | Select-Object -First 1
 Write-Host "  cmake --version" -ForegroundColor Gray
 cmake --version 2>$null | Select-Object -First 1
 
-Write-Host "  cling (已安装到 $InstallDir)" -ForegroundColor Gray
+Write-Host "  cubytes (已安装到 $InstallDir)" -ForegroundColor Gray
 
 Write-Host ""
 Write-Host "开始学习:" -ForegroundColor Blue
 Write-Host "  1. 克隆练习仓库:" -ForegroundColor White
-Write-Host "     git clone https://github.com/puck02/Cling.git" -ForegroundColor Gray
-Write-Host "     cd Cling" -ForegroundColor Gray
+Write-Host "     git clone https://github.com/puck02/Cubytes.git" -ForegroundColor Gray
+Write-Host "     cd Cubytes" -ForegroundColor Gray
 Write-Host ""
 Write-Host "  2. 启动学习:" -ForegroundColor White
-Write-Host "     cling watch" -ForegroundColor Gray
+Write-Host "     cubytes watch" -ForegroundColor Gray
 Write-Host ""
 Write-Host "注意: 请重新打开终端以使PATH生效！" -ForegroundColor Yellow
 Write-Host ""

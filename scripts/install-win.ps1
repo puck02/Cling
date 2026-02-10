@@ -1,8 +1,8 @@
-# Cling Windows Installer
+# Cubytes Windows Installer
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $OutputEncoding = [System.Text.Encoding]::UTF8
 
-Write-Host "正在安装 Cling..." -ForegroundColor Green
+Write-Host "正在安装 Cubytes..." -ForegroundColor Green
 
 # 设置执行策略（如果需要）
 $currentPolicy = Get-ExecutionPolicy -Scope CurrentUser
@@ -24,29 +24,29 @@ if (!(Get-Command git -ErrorAction SilentlyContinue)) {
 }
 
 # Clone or update
-if (Test-Path "Cling") {
+if (Test-Path "Cubytes") {
     Write-Host "更新项目..." -ForegroundColor Yellow
-    Set-Location Cling
+    Set-Location Cubytes
     git pull origin main 2>$null
 } else {
     Write-Host "下载项目..." -ForegroundColor Yellow
-    git clone https://github.com/puck02/Cling.git
+    git clone https://github.com/puck02/Cubytes.git
     if ($LASTEXITCODE -ne 0) {
         Write-Host "下载失败" -ForegroundColor Red
         exit 1
     }
-    Set-Location Cling
+    Set-Location Cubytes
 }
 
-# Download cling.exe
-Write-Host "下载 Cling CLI..." -ForegroundColor Yellow
-if (!(Test-Path "cling.exe")) {
+# Download cubytes.exe
+Write-Host "下载 Cubytes CLI..." -ForegroundColor Yellow
+if (!(Test-Path "cubytes.exe")) {
     try {
         $ProgressPreference = 'SilentlyContinue'
-        Invoke-WebRequest -Uri "https://github.com/puck02/Cling/releases/latest/download/cling-windows-x86_64.exe" -OutFile "cling.exe" -UseBasicParsing
-        Write-Host "Cling CLI 下载完成" -ForegroundColor Green
+        Invoke-WebRequest -Uri "https://github.com/puck02/Cubytes/releases/latest/download/cubytes-windows-x86_64.exe" -OutFile "cubytes.exe" -UseBasicParsing
+        Write-Host "Cubytes CLI 下载完成" -ForegroundColor Green
     } catch {
-        Write-Host "Cling CLI 下载失败（可选）" -ForegroundColor Yellow
+        Write-Host "Cubytes CLI 下载失败（可选）" -ForegroundColor Yellow
     }
 }
 
@@ -70,32 +70,32 @@ if (!(Test-Path "mingw64\bin\gcc.exe")) {
     Write-Host "GCC 已存在" -ForegroundColor Green
 }
 
-# Create cling.bat wrapper
+# Create cubytes.bat wrapper
 $batContent = @"
 @echo off
 set PATH=%~dp0mingw64\bin;%PATH%
-"%~dp0cling.exe" %*
+"%~dp0cubytes.exe" %*
 "@
-Set-Content -Path "cling.bat" -Value $batContent -Encoding ASCII
+Set-Content -Path "cubytes.bat" -Value $batContent -Encoding ASCII
 
 # Create PowerShell wrapper for PATH
 $pathScript = @"
 `$env:Path = "`$PSScriptRoot;`$PSScriptRoot\mingw64\bin;`$env:Path"
-& "`$PSScriptRoot\cling.exe" @args
+& "`$PSScriptRoot\cubytes.exe" @args
 "@
-Set-Content -Path "cling.ps1" -Value $pathScript -Encoding UTF8
+Set-Content -Path "cubytes.ps1" -Value $pathScript -Encoding UTF8
 
 # 添加到用户 PATH 环境变量（永久）
-$clingPath = (Get-Location).Path
+$cubytesPath = (Get-Location).Path
 $userPath = [Environment]::GetEnvironmentVariable("Path", "User")
-if ($userPath -notlike "*$clingPath*") {
-    Write-Host "添加 Cling 到 PATH 环境变量..." -ForegroundColor Yellow
-    $newPath = "$clingPath;$userPath"
+if ($userPath -notlike "*$cubytesPath*") {
+    Write-Host "添加 Cubytes 到 PATH 环境变量..." -ForegroundColor Yellow
+    $newPath = "$cubytesPath;$userPath"
     [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
-    $env:Path = "$clingPath;$env:Path"  # 立即生效（当前会话）
+    $env:Path = "$cubytesPath;$env:Path"  # 立即生效（当前会话）
     Write-Host "✓ PATH 已更新" -ForegroundColor Green
 } else {
-    Write-Host "Cling 已在 PATH 中" -ForegroundColor Green
+    Write-Host "Cubytes 已在 PATH 中" -ForegroundColor Green
 }
 
 Write-Host ""
@@ -104,12 +104,12 @@ Write-Host "  安装完成！" -ForegroundColor Green
 Write-Host "=========================" -ForegroundColor Green
 Write-Host ""
 Write-Host "快速开始:" -ForegroundColor Yellow
-if (Test-Path "cling.exe") {
+if (Test-Path "cubytes.exe") {
     Write-Host ""
-    Write-Host "  cling watch" -ForegroundColor Cyan -BackgroundColor DarkGray
+    Write-Host "  cubytes watch" -ForegroundColor Cyan -BackgroundColor DarkGray
     Write-Host ""
     Write-Host "注意: 如果命令找不到，请重启 PowerShell 或运行:" -ForegroundColor DarkYellow
-    Write-Host "  .\cling watch" -ForegroundColor DarkGray
+    Write-Host "  .\cubytes watch" -ForegroundColor DarkGray
     Write-Host ""
     Write-Host "然后修改 exercises 目录下的练习文件即可自动编译测试！" -ForegroundColor White
 } else {

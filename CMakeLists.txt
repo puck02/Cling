@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(cling C)
+project(cubytes C)
 
 # 设置C标准
 set(CMAKE_C_STANDARD 11)

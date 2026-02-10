@@ -205,8 +205,8 @@ if (read(STDIN_FILENO, &c, 1) > 0) {
 完成挖空部分后，编译并运行：
 
 ```bash
-# 在 Cling 根目录下运行测试
-cling check snake_test
+# 在 Cubytes 根目录下运行测试
+cubytes check snake_test
 
 # 编译游戏
 cd build
@@ -258,7 +258,7 @@ food->pos.y = ?;
 
 ## 🎯 测试策略
 
-1. **单元测试**：`cling check snake_test` 测试每个函数
+1. **单元测试**：`cubytes check snake_test` 测试每个函数
 2. **集成测试**：运行完整游戏，测试各种场景
    - 正常移动
    - 吃食物变长

@@ -1,5 +1,5 @@
 [package]
-name = "cling"
+name = "cubytes"
 version = "0.1.0"
 edition = "2021"
 
@@ -13,5 +13,5 @@ colored = "2.1"
 indicatif = "0.17"
 
 [[bin]]
-name = "cling"
+name = "cubytes"
 path = "src/main.rs"

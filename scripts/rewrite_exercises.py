@@ -3,7 +3,7 @@
 
 import os
 
-BASE = '/Users/ponepuck/Library/CloudStorage/OneDrive-Personal/workSpace/Cling/exercises'
+BASE = '/Users/ponepuck/Library/CloudStorage/OneDrive-Personal/workSpace/Cubytes/exercises'
 
 exercises = {}
 

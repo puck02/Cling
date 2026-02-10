@@ -27,7 +27,7 @@ pub fn run(exercises: &ExerciseList, name: &str, state: &mut StateFile) {
                         println!("\n{}", exercises.final_message);
                     }
                     
-                    state.save(".cling-state.txt");
+                    state.save(".cubytes-state.txt");
                 }
                 Err(e) => {
                     println!("{}", "❌ 失败".red().bold());

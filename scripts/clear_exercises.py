@@ -2,7 +2,7 @@
 import re
 from pathlib import Path
 
-base = Path('/Users/ponepuck/Library/CloudStorage/OneDrive-Personal/workSpace/Cling/exercises')
+base = Path('/Users/ponepuck/Library/CloudStorage/OneDrive-Personal/workSpace/Cubytes/exercises')
 
 def clear_function_bodies(filepath):
     """Clear function implementations but keep test functions"""

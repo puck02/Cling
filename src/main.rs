@@ -13,7 +13,7 @@ use exercise::ExerciseList;
 use state::StateFile;
 
 #[derive(Parser)]
-#[command(name = "cling")]
+#[command(name = "cubytes")]
 #[command(about = "C语言快速入门练习系统", long_about = None)]
 struct Cli {
     #[command(subcommand)]
@@ -49,7 +49,7 @@ fn main() {
     };
     
     // 加载状态
-    let mut state = StateFile::load(".cling-state.txt");
+    let mut state = StateFile::load(".cubytes-state.txt");
     
     match cli.command {
         None | Some(Commands::Watch) => {
@@ -108,7 +108,7 @@ fn reset_exercise(exercises: &ExerciseList, name: &str, state: &mut StateFile) {
             println!("{} {}", "🔄 重置练习:".yellow(), name);
             // TODO: 实现重置逻辑
             state.reset_exercise(name);
-            state.save(".cling-state.txt");
+            state.save(".cubytes-state.txt");
             println!("{}", "✅ 重置成功".green());
         }
         None => {
@@ -149,7 +149,7 @@ fn check_all(exercises: &ExerciseList, state: &mut StateFile) {
         }
     }
     
-    state.save(".cling-state.txt");
+    state.save(".cubytes-state.txt");
     
     println!("\n{}", "=".repeat(60));
     println!("通过: {} | 失败: {}", passed.to_string().green(), failed.to_string().red());
@@ -184,14 +184,14 @@ fn show_completion_celebration(exercises: &ExerciseList) {
     // 清屏显示最终庆祝
     print!("\x1B[2J\x1B[1;1H");
     
-    // CLING ASCII Logo
+    // CUBYTES ASCII Logo
     println!();
-    println!("{}", "     ██████╗ ██╗     ██╗███╗   ██╗ ██████╗ ".bright_cyan().bold());
-    println!("{}", "    ██╔════╝ ██║     ██║████╗  ██║██╔════╝ ".bright_cyan().bold());
-    println!("{}", "    ██║      ██║     ██║██╔██╗ ██║██║  ███╗".bright_cyan().bold());
-    println!("{}", "    ██║      ██║     ██║██║╚██╗██║██║   ██║".bright_cyan().bold());
-    println!("{}", "    ╚██████╗ ███████╗██║██║ ╚████║╚██████╔╝".bright_cyan().bold());
-    println!("{}", "     ╚═════╝ ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ".bright_cyan().bold());
+    println!("{}", "     ██████╗██╗   ██╗██████╗ ██╗   ██╗████████╗███████╗███████╗".bright_cyan().bold());
+    println!("{}", "    ██╔════╝██║   ██║██╔══██╗╚██╗ ██╔╝╚══██╔══╝██╔════╝██╔════╝".bright_cyan().bold());
+    println!("{}", "    ██║     ██║   ██║██████╔╝ ╚████╔╝    ██║   █████╗  ███████╗".bright_cyan().bold());
+    println!("{}", "    ██║     ██║   ██║██╔══██╗  ╚██╔╝     ██║   ██╔══╝  ╚════██║".bright_cyan().bold());
+    println!("{}", "    ╚██████╗╚██████╔╝██████╔╝   ██║      ██║   ███████╗███████║".bright_cyan().bold());
+    println!("{}", "     ╚═════╝ ╚═════╝ ╚═════╝    ╚═╝      ╚═╝   ╚══════╝╚══════╝".bright_cyan().bold());
     println!();
     println!("{}", "           C语言快速入门练习系统".bright_white());
     println!();

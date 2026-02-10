@@ -1,7 +1,7 @@
 format_version = 1
 
 welcome_message = """
-欢迎来到 Cling！🎯
+欢迎来到 Cubytes！🎯
 
 这是一个交互式C语言学习系统，包含58道精心设计的练习题，
 帮助你快速掌握C语言基础知识。
@@ -55,7 +55,7 @@ final_message = """
 """
 
 [project]
-name = "cling"
+name = "cubytes"
 version = "0.1.0"
 language = "c"
 c_standard = "c11"

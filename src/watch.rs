@@ -23,7 +23,7 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
         
         if let Some(name) = first_incomplete {
             state.set_current(&name);
-            state.save(".cling-state.txt");
+            state.save(".cubytes-state.txt");
             name
         } else if let Some(last) = exercises.exercises.last() {
             // 全部完成，停在最后一题
@@ -74,7 +74,7 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
                             if let Some(next) = exercises.get_next(&current_exercise) {
                                 current_exercise = next.name.clone();
                                 state.set_current(&current_exercise);
-                                state.save(".cling-state.txt");
+                                state.save(".cubytes-state.txt");
                                 // 检查下一题
                                 check_exercise(exercises, &current_exercise, state);
                             }
@@ -98,7 +98,7 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
                         if let Some(next) = exercises.get_next(&current_exercise) {
                             current_exercise = next.name.clone();
                             state.set_current(&current_exercise);
-                            state.save(".cling-state.txt");
+                            state.save(".cubytes-state.txt");
                             println!("\n{}", format!("切换到: {}", current_exercise).cyan());
                             last_check_time = Instant::now(); // 更新时间，避免文件监控重复触发
                             check_exercise(exercises, &current_exercise, state);
@@ -114,7 +114,7 @@ pub fn watch(exercises: &ExerciseList, state: &mut StateFile) {
                             if let Some(next) = exercises.get_next(&current_exercise) {
                                 current_exercise = next.name.clone();
                                 state.set_current(&current_exercise);
-                                state.save(".cling-state.txt");
+                                state.save(".cubytes-state.txt");
                                 // 检查下一题
                                 check_exercise(exercises, &current_exercise, state);
                             }
@@ -151,7 +151,7 @@ fn check_exercise(exercises: &ExerciseList, name: &str, state: &mut StateFile) -
                     state.complete_exercise(name);
                     println!("\n{}", "🎉 太棒了！进入下一题...".green());
                 }
-                state.save(".cling-state.txt");
+                state.save(".cubytes-state.txt");
                 ui::show_progress(exercises, state);
                 return true;
             }
@@ -196,14 +196,14 @@ fn show_completion_celebration(exercises: &ExerciseList) {
     // 清屏显示最终庆祝
     print!("\x1B[2J\x1B[1;1H");
     
-    // CLING ASCII Logo
+    // CUBYTES ASCII Logo
     println!();
-    println!("{}", "     ██████╗ ██╗     ██╗███╗   ██╗ ██████╗ ".bright_cyan().bold());
-    println!("{}", "    ██╔════╝ ██║     ██║████╗  ██║██╔════╝ ".bright_cyan().bold());
-    println!("{}", "    ██║      ██║     ██║██╔██╗ ██║██║  ███╗".bright_cyan().bold());
-    println!("{}", "    ██║      ██║     ██║██║╚██╗██║██║   ██║".bright_cyan().bold());
-    println!("{}", "    ╚██████╗ ███████╗██║██║ ╚████║╚██████╔╝".bright_cyan().bold());
-    println!("{}", "     ╚═════╝ ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ".bright_cyan().bold());
+    println!("{}", "     ██████╗██╗   ██╗██████╗ ██╗   ██╗████████╗███████╗███████╗".bright_cyan().bold());
+    println!("{}", "    ██╔════╝██║   ██║██╔══██╗╚██╗ ██╔╝╚══██╔══╝██╔════╝██╔════╝".bright_cyan().bold());
+    println!("{}", "    ██║     ██║   ██║██████╔╝ ╚████╔╝    ██║   █████╗  ███████╗".bright_cyan().bold());
+    println!("{}", "    ██║     ██║   ██║██╔══██╗  ╚██╔╝     ██║   ██╔══╝  ╚════██║".bright_cyan().bold());
+    println!("{}", "    ╚██████╗╚██████╔╝██████╔╝   ██║      ██║   ███████╗███████║".bright_cyan().bold());
+    println!("{}", "     ╚═════╝ ╚═════╝ ╚═════╝    ╚═╝      ╚═╝   ╚══════╝╚══════╝".bright_cyan().bold());
     println!();
     println!("{}", "           C语言快速入门练习系统".bright_white());
     println!();

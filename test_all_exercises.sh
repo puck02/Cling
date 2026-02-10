@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Cling - 综合测试脚本
+# Cubytes - 综合测试脚本
 set -e
 
 cd "$(dirname "$0")"
@@ -16,7 +16,7 @@ FAILED=0
 SKIPPED=0
 
 echo "========================================"
-echo "Cling - 测试所有58道练习"
+echo "Cubytes - 测试所有58道练习"
 echo "========================================"
 echo ""
 

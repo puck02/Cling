@@ -1,6 +1,6 @@
 #!/bin/bash
-# Cling 一键安装脚本 (macOS/Linux)
-# 使用方法: curl -fsSL https://raw.githubusercontent.com/puck02/Cling/main/scripts/install.sh | bash
+# Cubytes 一键安装脚本 (macOS/Linux)
+# 使用方法: curl -fsSL https://raw.githubusercontent.com/puck02/Cubytes/main/scripts/install.sh | bash
 
 set -e
 
@@ -12,16 +12,14 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 echo -e "${BLUE}"
-echo "  _____ _ _             "
-echo " / ____| (_)            "
-echo "| |    | |_ _ __   __ _ "
-echo "| |    | | | '_ \\ / _\` |"
-echo "| |____| | | | | | (_| |"
-echo " \\_____|_|_|_| |_|\\__, |"
-echo "                   __/ |"
-echo "                  |___/ "
+echo "  _____ _           _            "
+echo " / ____| |         | |           "
+echo "| |    | |_   _ ___| |_ ___  ___ "
+echo "| |    | | | | / __| __/ _ \\/ __|"
+echo "| |____| | |_| \\__ \\ ||  __/\\__ \\"
+echo " \\_____|_|\\__,_|___/\\__\\___||___/"
 echo -e "${NC}"
-echo -e "${GREEN}Cling - C语言快速入门练习系统${NC}"
+echo -e "${GREEN}Cubytes - C语言快速入门练习系统${NC}"
 echo ""
 
 # 检测系统
@@ -138,28 +136,28 @@ elif [[ "$OS" == "linux" ]]; then
     install_cmake_linux
 fi
 
-# 下载并安装Cling
-echo -e "\n${BLUE}[4/4]${NC} 安装Cling..."
+# 下载并安装Cubytes
+echo -e "\n${BLUE}[4/4]${NC} 安装Cubytes..."
 
-CLING_VERSION="v0.1.0"
+CUBYTES_VERSION="v0.1.0"
 INSTALL_DIR="/usr/local/bin"
 
 if [[ "$OS" == "macos" ]]; then
-    ASSET_NAME="cling-macos-${ARCH}"
+    ASSET_NAME="cubytes-macos-${ARCH}"
 else
-    ASSET_NAME="cling-linux-x86_64"
+    ASSET_NAME="cubytes-linux-x86_64"
 fi
 
-DOWNLOAD_URL="https://github.com/puck02/Cling/releases/download/${CLING_VERSION}/${ASSET_NAME}"
+DOWNLOAD_URL="https://github.com/puck02/Cubytes/releases/download/${CUBYTES_VERSION}/${ASSET_NAME}"
 
 echo "  下载 ${ASSET_NAME}..."
-curl -fsSL "$DOWNLOAD_URL" -o /tmp/cling
+curl -fsSL "$DOWNLOAD_URL" -o /tmp/cubytes
 
 echo "  安装到 ${INSTALL_DIR}..."
-sudo mv /tmp/cling "$INSTALL_DIR/cling"
-sudo chmod +x "$INSTALL_DIR/cling"
+sudo mv /tmp/cubytes "$INSTALL_DIR/cubytes"
+sudo chmod +x "$INSTALL_DIR/cubytes"
 
-echo -e "${GREEN}  ✓ Cling 安装完成${NC}"
+echo -e "${GREEN}  ✓ Cubytes 安装完成${NC}"
 
 # 验证安装
 echo -e "\n${GREEN}========================================${NC}"
@@ -171,16 +169,16 @@ echo "  gcc --version"
 gcc --version | head -1
 echo "  cmake --version"
 cmake --version | head -1
-echo "  cling --version (如果可用)"
-cling --help 2>/dev/null | head -3 || echo "  cling 已安装到 $INSTALL_DIR"
+echo "  cubytes --version (如果可用)"
+cubytes --help 2>/dev/null | head -3 || echo "  cubytes 已安装到 $INSTALL_DIR"
 
 echo ""
 echo -e "${BLUE}开始学习:${NC}"
 echo "  1. 克隆练习仓库:"
-echo "     git clone https://github.com/puck02/Cling.git"
-echo "     cd Cling"
+echo "     git clone https://github.com/puck02/Cubytes.git"
+echo "     cd Cubytes"
 echo ""
 echo "  2. 启动学习:"
-echo "     cling watch"
+echo "     cubytes watch"
 echo ""
 echo -e "${YELLOW}祝你学习愉快！🎉${NC}"

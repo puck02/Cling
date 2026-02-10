@@ -16,16 +16,16 @@ jobs:
         include:
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            artifact_name: cling.exe
-            asset_name: cling-windows-x86_64.exe
+            artifact_name: cubytes.exe
+            asset_name: cubytes-windows-x86_64.exe
           - os: macos-latest
             target: x86_64-apple-darwin
-            artifact_name: cling
-            asset_name: cling-macos-x86_64
+            artifact_name: cubytes
+            asset_name: cubytes-macos-x86_64
           - os: macos-latest
             target: aarch64-apple-darwin
-            artifact_name: cling
-            asset_name: cling-macos-aarch64
+            artifact_name: cubytes
+            asset_name: cubytes-macos-aarch64
 
     steps:
       - uses: actions/checkout@v4

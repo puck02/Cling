@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="icon.png" alt="Cling Logo" width="200"/>
+<img src="icon.png" alt="Cubytes Logo" width="200"/>
 
-# 🎯 Cling - C语言入门交互式练习系统
+# 🎯 Cubytes - C语言入门交互式练习系统
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![C Standard](https://img.shields.io/badge/C-C11-brightgreen.svg)]()
@@ -11,7 +11,7 @@
 
 ## 📖 简介
 
-Cling是一个交互式C语言学习系统，包含58道精心设计的练习，帮助初学者快速掌握C语言基础知识。通过实时反馈的watch模式和测试驱动的学习方式，让C语言学习更加高效有趣。
+Cubytes是一个交互式C语言学习系统，包含58道精心设计的练习，帮助初学者快速掌握C语言基础知识。通过实时反馈的watch模式和测试驱动的学习方式，让C语言学习更加高效有趣。
 
 ### ✨ 特性
 
@@ -45,52 +45,49 @@ Cling是一个交互式C语言学习系统，包含58道精心设计的练习，
 
 ### ⚡ 一键安装（推荐）
 
-自动安装Cling + C编译器 + CMake，开箱即用！
+自动安装Cubytes + C编译器 + CMake，开箱即用！
 
 **Windows（PowerShell）：**
 ```powershell
-irm https://raw.githubusercontent.com/puck02/Cling/main/scripts/install-win.ps1 | iex
+irm https://raw.githubusercontent.com/puck02/Cubytes/main/scripts/install-win.ps1 | iex
 ```
 
 **macOS / Linux：**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/puck02/Cling/main/scripts/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/puck02/Cubytes/main/scripts/install.sh | bash
 ```
 
 安装完成后运行：
 ```bash
-cling watch
-```
-
----
+cubytes watch
 
 <details>
 <summary>📦 手动安装（如果一键安装失败）</summary>
 
-### 1. 安装Cling工具
+### 1. 安装Cubytes工具
 
-前往 [Releases页面](https://github.com/puck02/Cling/releases) 下载最新版本：
+前往 [Releases页面](https://github.com/puck02/Cubytes/releases) 下载最新版本：
 
 **Windows：**
-- 下载 `cling-windows-x86_64.exe`
-- 重命名为 `cling.exe`，放到任意文件夹
+- 下载 `cubytes-windows-x86_64.exe`
+- 重命名为 `cubytes.exe`，放到任意文件夹
 - 双击运行，或在CMD中使用
 
 **macOS：**
 ```bash
-# Intel芯片下载 cling-macos-x86_64
-# M1/M2芯片下载 cling-macos-aarch64
+# Intel芯片下载 cubytes-macos-x86_64
+# M1/M2芯片下载 cubytes-macos-aarch64
 
 # 添加执行权限
-chmod +x ~/Downloads/cling-macos-*
+chmod +x ~/Downloads/cubytes-macos-*
 
 # 移动到系统路径（可选）
-sudo mv ~/Downloads/cling-macos-* /usr/local/bin/cling
+sudo mv ~/Downloads/cubytes-macos-* /usr/local/bin/cubytes
 ```
 
 ### 2. 安装C编译器和CMake
 
-Cling需要C编译器来编译你的练习代码。
+Cubytes需要C编译器来编译你的练习代码。
 
 **macOS：**
 ```bash
@@ -135,11 +132,11 @@ cmake --version
 
 ```bash
 # 克隆练习仓库
-git clone https://github.com/puck02/Cling.git
-cd Cling
+git clone https://github.com/puck02/Cubytes.git
+cd Cubytes
 
 # 启动watch模式开始学习
-cling watch
+cubytes watch
 ```
 
 </details>
@@ -150,20 +147,20 @@ cling watch
 
 ### 命令参考
 
-> ⚠️ **注意：** 所有命令需要在项目根目录（Cling文件夹）下运行。
+> ⚠️ **注意：** 所有命令需要在项目根目录（Cubytes文件夹）下运行。
 
 | 命令 | 说明 | 示例 |
 |------|------|------|
-| `cling` / `cling watch` | 启动watch模式，自动检测文件变化 | `cling watch` |
-| `cling run <name>` | 运行指定练习 | `cling run variables1` |
-| `cling list` | 列出所有练习和完成状态 | `cling list` |
-| `cling reset <name>` | 重置练习到初始状态 | `cling reset loops2` |
-| `cling check` | 检查当前练习是否通过 | `cling check` |
-| `cling check-all` | 检查所有练习的完成情况 | `cling check-all` |
+| `cubytes` / `cubytes watch` | 启动watch模式，自动检测文件变化 | `cubytes watch` |
+| `cubytes run <name>` | 运行指定练习 | `cubytes run variables1` |
+| `cubytes list` | 列出所有练习和完成状态 | `cubytes list` |
+| `cubytes reset <name>` | 重置练习到初始状态 | `cubytes reset loops2` |
+| `cubytes check` | 检查当前练习是否通过 | `cubytes check` |
+| `cubytes check-all` | 检查所有练习的完成情况 | `cubytes check-all` |
 
 ### Watch模式快捷键
 
-启动 `cling watch` 后，可以使用以下快捷键：
+启动 `cubytes watch` 后，可以使用以下快捷键：
 
 | 按键 | 功能 | 说明 |
 |------|------|------|
@@ -303,6 +300,6 @@ MIT License - 详见 [LICENSE](LICENSE)
 
 **开始你的C语言学习之旅！** 🚀
 
-`cling watch`
+`cubytes watch`
 
 </div>

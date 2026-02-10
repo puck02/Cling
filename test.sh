@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Cling项目测试脚本
+# Cubytes项目测试脚本
 # 用于验证练习是否能正确编译
 
-echo "🎯 Cling - C语言学习系统测试"
+echo "🎯 Cubytes - C语言学习系统测试"
 echo "================================"
 echo ""
 
@@ -140,7 +140,7 @@ echo ""
 echo "下一步："
 echo "1. 安装Rust (用于CLI工具): curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
 echo "2. 编译CLI工具: cargo build --release"
-echo "3. 开始学习: ./target/release/cling watch"
+echo "3. 开始学习: ./target/release/cubytes watch"
 echo ""
 echo "或者直接使用GCC编译练习："
 echo "gcc -Wall -Wextra -std=c11 -I tests/unity exercises/XX/exerciseN.c tests/unity/unity.c -o out && ./out"

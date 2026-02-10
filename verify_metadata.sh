@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Cling - 元数据一致性验证脚本
+# Cubytes - 元数据一致性验证脚本
 # 检查文件系统与info.toml的一致性
 
 set -e
@@ -12,7 +12,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 echo "========================================"
-echo "Cling - 元数据一致性验证"
+echo "Cubytes - 元数据一致性验证"
 echo "========================================"
 echo ""
 
@@ -21,7 +21,7 @@ ERRORS=0
 # 1. 检查info.toml中定义的所有练习文件是否存在
 echo "1. 检查info.toml中定义的练习文件是否存在..."
 while IFS= read -r name; do
-    if [ "$name" == "cling" ]; then
+    if [ "$name" == "cubytes" ]; then
         continue
     fi
     
@@ -87,7 +87,7 @@ echo ""
 
 # 4. 统计信息
 echo "4. 统计信息..."
-EXERCISE_COUNT=$(grep -o 'name = "[^"]*"' info.toml | cut -d'"' -f2 | grep -v "cling" | wc -l | tr -d ' ')
+EXERCISE_COUNT=$(grep -o 'name = "[^"]*"' info.toml | cut -d'"' -f2 | grep -v "cubytes" | wc -l | tr -d ' ')
 FILE_COUNT=$(find exercises -name "*.c" -type f | grep -v snake_test | grep -v snake_logic | wc -l | tr -d ' ')
 SOLUTION_COUNT=$(find solutions -name "*.c" -type f | wc -l | tr -d ' ')
 

@@ -6,7 +6,7 @@ use std::env;
 /// 查找 gcc 编译器路径
 /// 优先使用项目本地的 mingw64/bin/gcc（Windows 便携安装），否则用系统 PATH 中的 gcc
 fn find_gcc() -> String {
-    // 尝试找到 cling.exe 所在目录下的 mingw64/bin/gcc
+    // 尝试找到 cubytes.exe 所在目录下的 mingw64/bin/gcc
     if let Ok(exe_path) = env::current_exe() {
         if let Some(exe_dir) = exe_path.parent() {
             let local_gcc = exe_dir.join("mingw64").join("bin").join("gcc.exe");
