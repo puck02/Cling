@@ -60,6 +60,9 @@ curl -fsSL https://raw.githubusercontent.com/puck02/Cubytes/main/scripts/install
 安装完成后运行：
 ```bash
 cubytes watch
+```
+
+---
 
 <details>
 <summary>📦 手动安装（如果一键安装失败）</summary>
