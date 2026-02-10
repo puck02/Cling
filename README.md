@@ -41,6 +41,8 @@ Cling是一个交互式C语言学习系统，包含58道精心设计的练习，
 
 ## 🚀 快速开始
 
+[演示视频](https://www.bilibili.com/video/BV1WaFDzeEm2)
+
 ### ⚡ 一键安装（推荐）
 
 自动安装Cling + C编译器 + CMake，开箱即用！
